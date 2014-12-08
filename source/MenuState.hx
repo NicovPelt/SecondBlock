@@ -18,6 +18,8 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		
+		add(new FlxSprite(0, 0, "assets/images/bakground.png"));
 	}
 	
 	/**
