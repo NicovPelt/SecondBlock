@@ -4,17 +4,16 @@ import openfl.display.Sprite;
 import openfl.Assets;
 import openfl.display.BitmapData;
 import openfl.events.MouseEvent;
+import cards.*;
 
 class Main extends Sprite {
 	
-	var deck:Array<Card>;
-	var topCard:Card;
+	var player1:Player;
+	var player2:Player;
 	
 	public function new () {
 		
 		super ();
-		
-		deck = new Array<Card>();
 		
 		Card.cardGraphics = new Array<BitmapData>();
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/RedCard.png"));
@@ -22,20 +21,26 @@ class Main extends Sprite {
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/GreenCard.png"));
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/BackCard.png"));
 		
-		deck.push(new Card(0, this));
-		deck.push(new Card(1, this));
-		deck.push(new Card(2, this));
+		player1 = new Player(this);
 		
-		refreshDeck();
-		//trace(Lib.current.stage.stageWidth + " " + stage.height);
 	}
 	
-	public function refreshDeck() {
-		if (deck.length > 0) {
-			topCard = deck.pop();
-			topCard.x = 100;
-			topCard.y = 100;
-			addChild(topCard);
-		}
+	/**
+	 * checks to see if a player is allowed to draw a card. TODO
+	 * @param	The player requesting the draw
+	 * @return	Whether it can be drawn or not
+	 */
+	public function canDraw( player:Player ):Bool {
+		return true;
+	}
+	
+	/**
+	 * checks to see if a player is allowed to place the dragged card to the dragged to spot. TODO
+	 * @param	The card to be placed
+	 * @param	The player requesting the placement
+	 * @return	Whether it can be placed or not
+	 */
+	public function canPlace(card:Card, player:Player):Bool {
+		return false;
 	}
 }
