@@ -22,23 +22,20 @@ class Main extends Sprite {
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/GreenCard.png"));
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/BackCard.png"));
 		
-		deck.push(new Card(0));
-		deck.push(new Card(1));
-		deck.push(new Card(2));
+		deck.push(new Card(0, this));
+		deck.push(new Card(1, this));
+		deck.push(new Card(2, this));
 		
-		var topCard = deck.pop();
-		topCard.x = 100;
-		topCard.y = 100;
-		topCard.addEventListener(MouseEvent.CLICK, drawCard);
-		addChild(topCard);
+		refreshDeck();
+		//trace(Lib.current.stage.stageWidth + " " + stage.height);
 	}
 	
-	public function drawCard( event:MouseEvent ) {
-		
-		
-		event.currentTarget.x = 200;
-		event.currentTarget.y = 100;
-		event.currentTarget.drawCard();
-		
+	public function refreshDeck() {
+		if (deck.length > 0) {
+			topCard = deck.pop();
+			topCard.x = 100;
+			topCard.y = 100;
+			addChild(topCard);
+		}
 	}
 }
