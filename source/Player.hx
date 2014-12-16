@@ -2,6 +2,7 @@ package ;
 
 import cards.*;
 import openfl.display.Sprite;
+import openfl.text.TextField;
 
 /**
  * ...
@@ -14,6 +15,7 @@ class Player extends Sprite
 	var hand:Array<Card>;
 	var grave:Array<Card>;
 	
+	var cardsLeft:TextField;
 	var topCard:Card; //top card of the deck
 	var main:Main;
 
@@ -22,6 +24,12 @@ class Player extends Sprite
 		super();
 		
 		this.main = main;
+		
+		cardsLeft = new TextField();
+		main.addChild(cardsLeft);
+		cardsLeft.textColor = 0xFFFFFF;
+		cardsLeft.x = 30;
+		cardsLeft.y = 550;
 		
 		deck = new Array<Card>();
 		hand = new Array<Card>();
@@ -48,16 +56,19 @@ class Player extends Sprite
 	public function refreshDeck() {
 		if (deck.length > 0) {
 			topCard = deck.pop();
-			topCard.x = 50;
+			topCard.x = 10;
 			topCard.y = 500;
 			main.addChild(topCard);
+			main.removeChild(cardsLeft);
+			cardsLeft.text = "" + (deck.length + 1);
+			main.addChild(cardsLeft);
 		}
 	}
 	
 	public function drawCard():Bool {
 		if (main.canDraw(this)) {
 			hand.push(topCard);
-			topCard.x = 50 + (hand.length * 60);
+			topCard.x = 50 + (hand.length * 70);
 			refreshDeck();
 			return true;
 		}
@@ -68,9 +79,12 @@ class Player extends Sprite
 		if (main.canPlace(card, this)) {
 			//TODO place card and execute effect
 		} else {
-			card.x = 50 +((hand.indexOf(card) + 1) * 60);
+			//return to hand
+			card.x = 50 +((hand.indexOf(card) + 1) * 70);
 			card.y = 500;
 		}
 	}
 	
+	
+
 }

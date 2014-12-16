@@ -20,6 +20,8 @@ class AssetData {
 			type.set ("assets/BackCard.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/BlueCard.png", "assets/BlueCard.png");
 			type.set ("assets/BlueCard.png", Reflect.field (AssetType, "image".toUpperCase ()));
+			path.set ("assets/BoardDigital.jpg", "assets/BoardDigital.jpg");
+			type.set ("assets/BoardDigital.jpg", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/GreenCard.png", "assets/GreenCard.png");
 			type.set ("assets/GreenCard.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/RedCard.png", "assets/RedCard.png");

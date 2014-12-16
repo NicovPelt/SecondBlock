@@ -5,15 +5,25 @@ import openfl.Assets;
 import openfl.display.BitmapData;
 import openfl.events.MouseEvent;
 import cards.*;
+import openfl.geom.Matrix;
 
 class Main extends Sprite {
 	
 	var player1:Player;
 	var player2:Player;
 	
+	var board:Sprite;
+	
 	public function new () {
 		
 		super ();
+		
+		board = new Sprite();
+		var bitmapData = Assets.getBitmapData ("assets/BoardDigital.jpg");
+		var scale = new Matrix(1.3333333, 0, 0, 1.333333, 0, 0);
+		board.graphics.beginBitmapFill(bitmapData, scale);
+		board.graphics.drawRect(0, 0, 800, 600);
+		addChild(board);
 		
 		Card.cardGraphics = new Array<BitmapData>();
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/RedCard.png"));
