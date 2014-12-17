@@ -3,6 +3,7 @@ package ;
 import cards.*;
 import openfl.display.Sprite;
 import openfl.text.TextField;
+import openfl.events.MouseEvent;
 
 /**
  * ...
@@ -10,6 +11,10 @@ import openfl.text.TextField;
  */
 class Player extends Sprite
 {
+	
+	var space:Int = 70; // space in between cards
+	
+	var startingHand:Bool = true;
 	
 	var deck:Array<Card>;
 	var hand:Array<Card>;
@@ -28,7 +33,7 @@ class Player extends Sprite
 		cardsLeft = new TextField();
 		main.addChild(cardsLeft);
 		cardsLeft.textColor = 0xFFFFFF;
-		cardsLeft.x = 30;
+		cardsLeft.x = 580;
 		cardsLeft.y = 550;
 		
 		deck = new Array<Card>();
@@ -37,16 +42,31 @@ class Player extends Sprite
 		
 		prepareDeck();
 		refreshDeck();
+		
+		/*
+		 * Draw 4 cards as starting hand
+		 */
+		for (i in 0...4) {
+			putInHand(topCard);
+		}
+		startingHand = false;
 	}
 	
 	/**
 	 * Adds cards to deck and shuffles it.
 	 */
 	private function prepareDeck() {
-		for ( i in 0...7){ //create 7 of each character card
-			deck.push(new Character(0, this));
-			deck.push(new Character(1, this));
-			deck.push(new Character(2, this));
+		var card:Card;
+		for ( i in 0...7) { //create 7 of each character card
+			card = new Character(0, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(1, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(2, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
 		}
 	}
 	
@@ -56,8 +76,8 @@ class Player extends Sprite
 	public function refreshDeck() {
 		if (deck.length > 0) {
 			topCard = deck.pop();
-			topCard.x = 10;
-			topCard.y = 500;
+			topCard.x = 560;
+			topCard.y = 520;
 			main.addChild(topCard);
 			main.removeChild(cardsLeft);
 			cardsLeft.text = "" + (deck.length + 1);
@@ -65,26 +85,52 @@ class Player extends Sprite
 		}
 	}
 	
-	public function drawCard():Bool {
-		if (main.canDraw(this)) {
+	public function canDrawCard():Bool {
+		if (main.canDraw(this)|| startingHand) {
 			hand.push(topCard);
-			topCard.x = 50 + (hand.length * 70);
+			topCard.x = 10 + ((hand.length - 1) * space);
 			refreshDeck();
 			return true;
 		}
 		return false;
 	}
 	
-	public function placeCard(card:Card) {
+	public function playCard(card:Card) {
 		if (main.canPlace(card, this)) {
 			//TODO place card and execute effect
 		} else {
 			//return to hand
-			card.x = 50 +((hand.indexOf(card) + 1) * 70);
-			card.y = 500;
+			card.x = 10 +(hand.indexOf(card) * space);
+			card.y = 520;
 		}
 	}
 	
+	private function putInHand(card:Card) {
+		if (canDrawCard()) {
+			card.removeEventListener(MouseEvent.CLICK, drawCard);
+			card.graphics.beginBitmapFill(Card.cardGraphics[card.cardType]);
+			card.graphics.drawRect(0, 0, Card.cardGraphics[card.cardType].width, Card.cardGraphics[card.cardType].height);
+			card.addEventListener( MouseEvent.MOUSE_DOWN, dragCard);
+		}
+	}
 	
+	public function drawCard( event:MouseEvent ) {
+		var card:Card = event.currentTarget;
+		putInHand(card);
+	}
+	
+	public function dragCard( event:MouseEvent ) {
+		var card:Card = event.currentTarget;
+		main.addChild(card);
+		card.startDrag();
+		card.addEventListener(MouseEvent.MOUSE_UP, placeCard);
+	}
+	
+	public function placeCard( event:MouseEvent ) {
+		var card:Card = event.currentTarget;
+		card.stopDrag();
+		playCard(event.target);
+		card.removeEventListener(MouseEvent.MOUSE_UP, placeCard);
+	}
 
 }
