@@ -12,26 +12,27 @@ import openfl.events.MouseEvent;
 class Player extends Sprite
 {
 	
-	var space:Int = 70; // space in between cards
+	var space:Int = 70; // space in between cards. May be changed to allow more cards in hand.
 	
 	var startingHand:Bool = true;
+	var activePlayer:Bool = true;
 	
 	var deck:Array<Card>;
 	var hand:Array<Card>;
 	var grave:Array<Card>;
 	
-	var cardsLeft:TextField;
+	var cardsLeft:TextField; //displays the cards left in the deck
 	var topCard:Card; //top card of the deck
 	var main:Main;
 
-	public function new(main:Main) 
+	public function new(main:Main,startingPlayer:Bool) 
 	{
 		super();
 		
 		this.main = main;
 		
 		cardsLeft = new TextField();
-		main.addChild(cardsLeft);
+		addChild(cardsLeft);
 		cardsLeft.textColor = 0xFFFFFF;
 		cardsLeft.x = 580;
 		cardsLeft.y = 550;
@@ -50,10 +51,18 @@ class Player extends Sprite
 			putInHand(topCard);
 		}
 		startingHand = false;
+		
+		if (!startingPlayer) {
+			changeActive();
+		}
+		
+		main.addChild(this);
+		
 	}
 	
 	/**
 	 * Adds cards to deck and shuffles it.
+	 * TODO shuffling it
 	 */
 	private function prepareDeck() {
 		var card:Card;
@@ -78,35 +87,22 @@ class Player extends Sprite
 			topCard = deck.pop();
 			topCard.x = 560;
 			topCard.y = 520;
-			main.addChild(topCard);
-			main.removeChild(cardsLeft);
+			addChild(topCard);
+			removeChild(cardsLeft);
 			cardsLeft.text = "" + (deck.length + 1);
-			main.addChild(cardsLeft);
+			addChild(cardsLeft);
 		}
 	}
 	
-	public function canDrawCard():Bool {
-		if (main.canDraw(this)|| startingHand) {
+	/**
+	 * when called, the top card of the deck is added to a player's hand if legal
+	 * @param	card
+	 */
+	private function putInHand(card:Card) {
+		if (main.canDraw(this) || startingHand) {
 			hand.push(topCard);
 			topCard.x = 10 + ((hand.length - 1) * space);
 			refreshDeck();
-			return true;
-		}
-		return false;
-	}
-	
-	public function playCard(card:Card) {
-		if (main.canPlace(card, this)) {
-			//TODO place card and execute effect
-		} else {
-			//return to hand
-			card.x = 10 +(hand.indexOf(card) * space);
-			card.y = 520;
-		}
-	}
-	
-	private function putInHand(card:Card) {
-		if (canDrawCard()) {
 			card.removeEventListener(MouseEvent.CLICK, drawCard);
 			card.graphics.beginBitmapFill(Card.cardGraphics[card.cardType]);
 			card.graphics.drawRect(0, 0, Card.cardGraphics[card.cardType].width, Card.cardGraphics[card.cardType].height);
@@ -114,22 +110,58 @@ class Player extends Sprite
 		}
 	}
 	
+	/**
+	 * make a player the active one or not
+	 * TODO make non-active player's cards in hand show the backside
+	 */
+	public function changeActive() {
+		if(activePlayer){
+			rotation = 180;
+			x = 800;
+			y = 600;
+			activePlayer = false;
+		} else {
+			rotation = 0;
+			x = 0;
+			y = 0;
+			activePlayer = true;
+		}
+	}
+	
+	/**
+	 * Called when player tries to draw a card
+	 * @param	event
+	 */
 	public function drawCard( event:MouseEvent ) {
 		var card:Card = event.currentTarget;
 		putInHand(card);
 	}
 	
+	/**
+	 * Called when a player tries to drag a card in their hand
+	 * @param	event
+	 */
 	public function dragCard( event:MouseEvent ) {
 		var card:Card = event.currentTarget;
-		main.addChild(card);
+		addChild(card);
 		card.startDrag();
 		card.addEventListener(MouseEvent.MOUSE_UP, placeCard);
 	}
 	
+	/**
+	 * Called when a player releases a card they're dragging
+	 * @param	event
+	 */
 	public function placeCard( event:MouseEvent ) {
 		var card:Card = event.currentTarget;
 		card.stopDrag();
-		playCard(event.target);
+		if (main.canPlace(card, this)) {
+			//TODO place card and execute effect
+		} else {
+			//return to hand
+			card.x = 10 +(hand.indexOf(card) * space);
+			card.y = 520;
+		}
 		card.removeEventListener(MouseEvent.MOUSE_UP, placeCard);
 	}
 

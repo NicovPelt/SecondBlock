@@ -14,10 +14,14 @@ class Main extends Sprite {
 	
 	var board:Sprite;
 	
+
 	public function new () {
 		
 		super ();
 		
+		/*
+		 * initializing board
+		 */
 		board = new Sprite();
 		var bitmapData = Assets.getBitmapData ("assets/BoardDigital.jpg");
 		var scale = new Matrix(1.3333333, 0, 0, 1.333333, 0, 0);
@@ -25,13 +29,23 @@ class Main extends Sprite {
 		board.graphics.drawRect(0, 0, 800, 600);
 		addChild(board);
 		
+		/*
+		 * initializing card graphics
+		 * TODO adding effect and trapcard graphics
+		 * 		finalizing all card graphics
+		 */
 		Card.cardGraphics = new Array<BitmapData>();
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/RedCard.png"));
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/BlueCard.png"));
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/GreenCard.png"));
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/BackCard.png"));
 		
-		player1 = new Player(this);
+		/*
+		 * initializing players
+		 * true = starting player
+		 */
+		player1 = new Player(this, true);
+		player2 = new Player(this, false);
 		
 	}
 	

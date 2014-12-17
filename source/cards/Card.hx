@@ -15,7 +15,6 @@ class Card extends Sprite
 	public var cardType:Int;
 	var turned:Bool = false;
 	var owner:Player;
-	//var main:Main;
 
 	/*
 	 * 0 = red
@@ -32,8 +31,6 @@ class Card extends Sprite
 		this.cardType = cardType;
 		this.graphics.beginBitmapFill(cardGraphics[3]);
 		this.graphics.drawRect(0, 0, cardGraphics[3].width, cardGraphics[3].height);
-		
-		//this.addEventListener(MouseEvent.CLICK, drawCard);
 	}
 	
 	
