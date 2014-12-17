@@ -11,6 +11,7 @@ class Main extends Sprite {
 	
 	var player1:Player;
 	var player2:Player;
+	var director:Director;
 	
 	var board:Sprite;
 	
@@ -41,30 +42,16 @@ class Main extends Sprite {
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/BackCard.png"));
 		
 		/*
-		 * initializing players
+		 * initializing players and director
 		 * true = starting player
 		 */
-		player1 = new Player(this, true);
-		player2 = new Player(this, false);
+		director = new Director();
+		player1 = new Player(director, this, true);
+		player2 = new Player(director, this, false);
+		director.player1 = player1;
+		director.player2 = player2;
 		
 	}
+
 	
-	/**
-	 * checks to see if a player is allowed to draw a card. TODO
-	 * @param	The player requesting the draw
-	 * @return	Whether it can be drawn or not
-	 */
-	public function canDraw( player:Player ):Bool {
-		return true;
-	}
-	
-	/**
-	 * checks to see if a player is allowed to place the dragged card to the dragged to spot. TODO
-	 * @param	The card to be placed
-	 * @param	The player requesting the placement
-	 * @return	Whether it can be placed or not
-	 */
-	public function canPlace(card:Card, player:Player):Bool {
-		return false;
-	}
 }

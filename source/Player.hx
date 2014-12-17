@@ -15,7 +15,7 @@ class Player extends Sprite
 	var space:Int = 70; // space in between cards. May be changed to allow more cards in hand.
 	
 	var startingHand:Bool = true;
-	var activePlayer:Bool = true;
+	public var activePlayer:Bool = true;
 	
 	var deck:Array<Card>;
 	var hand:Array<Card>;
@@ -23,12 +23,14 @@ class Player extends Sprite
 	
 	var cardsLeft:TextField; //displays the cards left in the deck
 	var topCard:Card; //top card of the deck
+	var director:Director;
 	var main:Main;
-
-	public function new(main:Main,startingPlayer:Bool) 
+	
+	public function new(director:Director, main:Main, startingPlayer:Bool) 
 	{
 		super();
 		
+		this.director = director;
 		this.main = main;
 		
 		cardsLeft = new TextField();
@@ -99,7 +101,7 @@ class Player extends Sprite
 	 * @param	card
 	 */
 	private function putInHand(card:Card) {
-		if (main.canDraw(this) || startingHand) {
+		if (director.canDraw(this) || startingHand) {
 			hand.push(topCard);
 			topCard.x = 10 + ((hand.length - 1) * space);
 			refreshDeck();
@@ -120,11 +122,19 @@ class Player extends Sprite
 			x = 800;
 			y = 600;
 			activePlayer = false;
+			for (i in 0...hand.length) {
+				hand[i].graphics.beginBitmapFill(Card.cardGraphics[3]);
+				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[3].width, Card.cardGraphics[3].height);
+			}
 		} else {
 			rotation = 0;
 			x = 0;
 			y = 0;
 			activePlayer = true;
+			for (i in 0...hand.length) {
+				hand[i].graphics.beginBitmapFill(Card.cardGraphics[hand[i].cardType]);
+				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[hand[i].cardType].width, Card.cardGraphics[hand[i].cardType].height);
+			}
 		}
 	}
 	
@@ -143,9 +153,11 @@ class Player extends Sprite
 	 */
 	public function dragCard( event:MouseEvent ) {
 		var card:Card = event.currentTarget;
-		addChild(card);
-		card.startDrag();
-		card.addEventListener(MouseEvent.MOUSE_UP, placeCard);
+		if(card.owner.activePlayer){
+			addChild(card);
+			card.startDrag();
+			card.addEventListener(MouseEvent.MOUSE_UP, placeCard);
+		}
 	}
 	
 	/**
@@ -155,7 +167,7 @@ class Player extends Sprite
 	public function placeCard( event:MouseEvent ) {
 		var card:Card = event.currentTarget;
 		card.stopDrag();
-		if (main.canPlace(card, this)) {
+		if (director.canPlace(card, this)) {
 			//TODO place card and execute effect
 		} else {
 			//return to hand

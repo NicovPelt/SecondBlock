@@ -14,7 +14,7 @@ class Card extends Sprite
 	
 	public var cardType:Int;
 	var turned:Bool = false;
-	var owner:Player;
+	public var owner:Player;
 
 	/*
 	 * 0 = red
@@ -24,11 +24,10 @@ class Card extends Sprite
 	 */
 	public function new(cardType:Int, owner:Player) 
 	{
-		
 		super();
 		this.owner = owner;
-		
 		this.cardType = cardType;
+		
 		this.graphics.beginBitmapFill(cardGraphics[3]);
 		this.graphics.drawRect(0, 0, cardGraphics[3].width, cardGraphics[3].height);
 	}
