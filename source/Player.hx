@@ -98,7 +98,7 @@ class Player extends Sprite
 	
 	/**
 	 * when called, the top card of the deck is added to a player's hand if legal
-	 * @param	card
+	 * @param	card to be drawn
 	 */
 	private function putInHand(card:Card) {
 		if (director.canDraw(this) || startingHand) {
@@ -114,7 +114,6 @@ class Player extends Sprite
 	
 	/**
 	 * make a player the active one or not
-	 * TODO make non-active player's cards in hand show the backside
 	 */
 	public function changeActive() {
 		if(activePlayer){
