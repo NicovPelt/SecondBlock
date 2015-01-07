@@ -81,6 +81,10 @@ class Player extends Sprite
 		}
 	}
 	
+	public function setupField() {
+		
+	}
+	
 	/**
 	 * displays the top card of the deck, if any.
 	 */
