@@ -56,6 +56,14 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/CardField.png", AssetType.IMAGE);
 		path.set ("assets/GreenCard.png", "assets/GreenCard.png");
 		type.set ("assets/GreenCard.png", AssetType.IMAGE);
+		path.set ("assets/PhaseIcons/Phase1.png", "assets/PhaseIcons/Phase1.png");
+		type.set ("assets/PhaseIcons/Phase1.png", AssetType.IMAGE);
+		path.set ("assets/PhaseIcons/Phase2.png", "assets/PhaseIcons/Phase2.png");
+		type.set ("assets/PhaseIcons/Phase2.png", AssetType.IMAGE);
+		path.set ("assets/PhaseIcons/Phase3.png", "assets/PhaseIcons/Phase3.png");
+		type.set ("assets/PhaseIcons/Phase3.png", AssetType.IMAGE);
+		path.set ("assets/PhaseIcons/PhaseIndicator.png", "assets/PhaseIcons/PhaseIndicator.png");
+		type.set ("assets/PhaseIcons/PhaseIndicator.png", AssetType.IMAGE);
 		path.set ("assets/RedCard.png", "assets/RedCard.png");
 		type.set ("assets/RedCard.png", AssetType.IMAGE);
 		
@@ -78,6 +86,18 @@ class DefaultAssetLibrary extends AssetLibrary {
 		id = "assets/GreenCard.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
+		id = "assets/PhaseIcons/Phase1.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/PhaseIcons/Phase2.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/PhaseIcons/Phase3.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/PhaseIcons/PhaseIndicator.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
 		id = "assets/RedCard.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
@@ -94,9 +114,17 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -728,7 +756,15 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
 #elseif html5
+
+
+
+
 
 
 

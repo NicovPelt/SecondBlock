@@ -15,6 +15,7 @@ class Main extends Sprite {
 	
 	var board:Sprite;
 	
+	
 
 	public function new () {
 		
@@ -28,8 +29,8 @@ class Main extends Sprite {
 		var scale = new Matrix(1.3333333, 0, 0, 1.333333, 0, 0);
 		board.graphics.beginBitmapFill(bitmapData, scale);
 		board.graphics.drawRect(0, 0, 800, 600);
-		addChild(board);
-		
+		//addChild(board);
+	 
 		/*
 		 * initializing card graphics
 		 * TODO adding effect and trapcard graphics
@@ -45,7 +46,7 @@ class Main extends Sprite {
 		 * initializing players and director
 		 * true = starting player
 		 */
-		director = new Director();
+		director = new Director(this);
 		player1 = new Player(director, this, true);
 		player2 = new Player(director, this, false);
 		director.player1 = player1;

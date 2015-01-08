@@ -2,8 +2,11 @@ package ;
 
 import cards.*;
 import openfl.display.Sprite;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
 import openfl.text.TextField;
 import openfl.events.MouseEvent;
+import openfl.Lib;
 
 /**
  * ...
@@ -20,6 +23,9 @@ class Player extends Sprite
 	var deck:Array<Card>;
 	var hand:Array<Card>;
 	var grave:Array<Card>;
+	
+	// 0 = leftmost slot, 5 = rightmost slot
+	var slots:Array<BoardField>;
 	
 	var cardsLeft:TextField; //displays the cards left in the deck
 	var topCard:Card; //top card of the deck
@@ -42,7 +48,9 @@ class Player extends Sprite
 		deck = new Array<Card>();
 		hand = new Array<Card>();
 		grave = new Array<Card>();
+		slots = new Array<BoardField>();
 		
+		setupField();
 		prepareDeck();
 		refreshDeck();
 		
@@ -56,8 +64,7 @@ class Player extends Sprite
 		
 		if (!startingPlayer) {
 			changeActive();
-		}
-		
+		}		
 		main.addChild(this);
 		
 	}
@@ -81,8 +88,19 @@ class Player extends Sprite
 		}
 	}
 	
+	/**
+	 * adds the card slots to the field
+	 */
 	public function setupField() {
-		
+		slots.push(new BoardField(11));
+		slots.push(new BoardField(140));
+		slots.push(new BoardField(277));
+		slots.push(new BoardField(407));
+		slots.push(new BoardField(544));
+		slots.push(new BoardField(673));
+		for (fields in slots) {
+			addChild(fields);
+		}
 	}
 	
 	/**
@@ -170,8 +188,19 @@ class Player extends Sprite
 	public function placeCard( event:MouseEvent ) {
 		var card:Card = event.currentTarget;
 		card.stopDrag();
-		if (director.canPlace(card, this)) {
-			//TODO place card and execute effect
+		card.removeEventListener(MouseEvent.MOUSE_UP, placeCard);
+		var targetField:BoardField = null;
+		for (slot in slots) {
+			targetField = slot;
+			var rect = new Rectangle(slot.x, slot.y, slot.width, slot.height);
+			if (rect.containsPoint(new Point(Lib.current.stage.mouseX, Lib.current.stage.mouseY))) {
+				break;
+			}
+		}
+		if (director.canPlace(card, this) && targetField.canPlaceCard(card)) {
+			//place card and execute effect
+			card.removeEventListener(MouseEvent.MOUSE_DOWN, dragCard);
+			targetField.placeCard(card);
 		} else {
 			//return to hand
 			card.x = 10 +(hand.indexOf(card) * space);
