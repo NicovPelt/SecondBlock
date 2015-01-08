@@ -20,15 +20,15 @@ class Player extends Sprite
 	var startingHand:Bool = true;
 	public var activePlayer:Bool = true;
 	
-	var deck:Array<Card>;
+	public var deck:Array<Card>;
 	var hand:Array<Card>;
-	var grave:Array<Card>;
+	public var grave:Array<Card>;
 	
 	// 0 = leftmost slot, 5 = rightmost slot
-	var slots:Array<BoardField>;
+	public var slots:Array<BoardField>;
 	
 	var cardsLeft:TextField; //displays the cards left in the deck
-	var topCard:Card; //top card of the deck
+	public var topCard:Card; //top card of the deck
 	var director:Director;
 	var main:Main;
 	
@@ -200,13 +200,21 @@ class Player extends Sprite
 		if (director.canPlace(card, this) && targetField.canPlaceCard(card)) {
 			//place card and execute effect
 			card.removeEventListener(MouseEvent.MOUSE_DOWN, dragCard);
+			hand.remove(card);
+			rearangeHand();
 			targetField.placeCard(card);
+			director.cardPlaced();
 		} else {
 			//return to hand
 			card.x = 10 +(hand.indexOf(card) * space);
 			card.y = 520;
 		}
-		card.removeEventListener(MouseEvent.MOUSE_UP, placeCard);
+	}
+	
+	public function rearangeHand() {
+		for (card in hand) {
+			card.x = 10 +(hand.indexOf(card) * space);
+		}
 	}
 
 }

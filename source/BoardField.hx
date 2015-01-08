@@ -13,8 +13,8 @@ import openfl.events.MouseEvent;
 class BoardField extends Sprite
 {
 
-	var characterCard:Character = null;
-	var trapCard:Card = null;
+	public var characterCard:Character = null;
+	public var trapCard:Card = null;
 	
 	public function new(x:Int) 
 	{

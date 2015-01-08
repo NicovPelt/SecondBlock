@@ -29,6 +29,11 @@ class Director
 	var phase2:Sprite;
 	var phase3:Sprite;
 	var phaseInd:Sprite;
+	
+	var attackerField:Array<BoardField>;
+	var defenderField:Array<BoardField>;
+	var attacked:Array<Bool>;
+	var attacker:Card;
 
 	public function new(main:Main) 
 	{
@@ -95,13 +100,135 @@ class Director
 	 */
 	public function canPlace(card:Card, player:Player):Bool {
 		if (player.activePlayer && turnPhase == 1) {
-			cardsPlaced ++;
-			if (cardsPlaced == 2) {
-				changePhase();
-			}
 			return true;
 		}
 		return false;
+	}
+	
+	public function cardPlaced() {
+		cardsPlaced ++;
+		if (cardsPlaced == 2) {
+			changePhase();
+		}
+	}
+	
+	function startAttackPhase() {
+		attacked = new Array<Bool>();
+		if (player1.activePlayer) {
+			attackerField = player1.slots;
+			defenderField = player2.slots;
+		} else {
+			attackerField = player2.slots;
+			defenderField = player1.slots;
+		}
+		for (slot in attackerField) {
+			if (slot.characterCard != null) {
+				slot.characterCard.addEventListener(MouseEvent.CLICK, readyAttack);
+				attacked.push(false);
+			} else {
+				attacked.push(true);
+			}
+		}
+		trace(attacked);
+	}
+	
+	public function readyAttack(event:MouseEvent) {
+		attacker = event.currentTarget;
+		var pos = 0;
+		for (slot in attackerField) {
+			if (slot.characterCard != null) {
+				slot.characterCard.removeEventListener(MouseEvent.CLICK, readyAttack);
+				if (slot.characterCard == attacker) {
+					var noDefenders:Bool = true;
+					attacked[pos] = true;
+					if (pos == 0 || pos == 1) {
+						for (i in 4...6) {
+							if (defenderField[i].characterCard != null) {
+								noDefenders = false;
+								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, attack);
+							}
+						}
+					} else if (pos == 2 || pos == 3) {
+						for (i in 2...4) {
+							if (defenderField[i].characterCard != null) {
+								noDefenders = false;
+								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, attack);
+							}
+						}
+					} else if (pos == 4 || pos == 5) {
+						for (i in 0...2) {
+							if (defenderField[i].characterCard != null) {
+								noDefenders = false;
+								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, attack);
+							}
+						}
+					}
+					if (noDefenders) {
+						for (i in 0...pos) {
+							if (attackerField[i].characterCard != null && !attacked[i]) {
+								attackerField[i].characterCard.addEventListener(MouseEvent.CLICK, readyAttack);
+							}
+						}
+						directAttack();
+						break;
+					}
+				}
+			}
+			pos++;
+		}
+	}
+	
+	public function attack(event:MouseEvent) {
+		//TODO give back listeners to chars that still need to attack
+		trace("battle");
+		var defender:Card = event.currentTarget;
+		defender.removeEventListener(MouseEvent.CLICK, attack);
+		if ((attacker.cardType == 0 && defender.cardType == 2) || (attacker.cardType == 1 && defender.cardType == 0) || (attacker.cardType == 2 && defender.cardType == 1)) {
+			for (slot in defenderField) {
+				if (defender == slot.characterCard) {
+					slot.characterCard = null;
+					defender.x = 700;
+					defender.y = 520;
+					if (player1.activePlayer) {
+						player2.grave.push(defender);
+					} else {
+						player1.grave.push(defender);
+					}
+				}
+			}
+		}
+		var finalAttack:Bool = true;
+		for (i in 0...6) {
+			if (!attacked[i]) {
+				finalAttack = false;
+				attackerField[i].characterCard.addEventListener(MouseEvent.CLICK, readyAttack);
+				break;
+			}
+		}
+		if (finalAttack) {
+			changePhase();
+		}
+	}
+	
+	public function directAttack() {
+		trace("direct hit");
+		if (player1.activePlayer) {
+			player2.grave.push(player2.topCard);
+			player2.refreshDeck();
+		} else {
+			player1.grave.push(player1.topCard);
+			player1.refreshDeck();
+		}
+		var finalAttack:Bool = true;
+		for (hasAttacked in attacked) {
+			if (!hasAttacked) {
+				finalAttack = false;
+				break;
+			}
+		}
+		if (finalAttack) {
+			changePhase();
+		}
 	}
 	
 	/**
@@ -112,10 +239,15 @@ class Director
 		if (turnPhase < 2){
 			turnPhase++;
 			phaseInd.x += 30;
+			if (turnPhase == 2) {
+				startAttackPhase();
+			}
 		} else {
 			player1.changeActive();
 			player2.changeActive();
 			turnPhase = 0;
+			cardsPlaced = 0;
+			cardsDrawn = 0;
 			phaseInd.x = 360;
 		}
 	}
