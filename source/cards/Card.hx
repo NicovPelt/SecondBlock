@@ -22,7 +22,7 @@ class Card extends Sprite
 	 * 2 = green
 	 * 3 = backside
 	 */
-	public function new(cardType:Int, owner:Player) 
+	public function new(cardType:Int, owner:Player ) 
 	{
 		super();
 		this.owner = owner;

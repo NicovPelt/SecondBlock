@@ -22,8 +22,11 @@ class Director
 	public var player1:Player;
 	public var player2:Player;
 	
+	// var to keep track of the number of cards drawn in the first phase of a turn. Starts at -8 to compensate for the starting hand drawn.
 	var cardsDrawn:Int = -8;
+	// var to keep track of the number of cards placed in the second phase of a turn.
 	var cardsPlaced:Int = 0;
+	
 	
 	var phase1:Sprite;
 	var phase2:Sprite;
@@ -105,6 +108,11 @@ class Director
 		return false;
 	}
 	
+	/**
+	 * Funtion called when a card is placed in the second phase. 
+	 * Changes phase when the second card is placed
+	 * TODO keep effect and trap placement into consideration
+	 */ 
 	public function cardPlaced() {
 		cardsPlaced ++;
 		if (cardsPlaced == 2) {
@@ -112,6 +120,10 @@ class Director
 		}
 	}
 	
+	/**
+	 * Called when 3rd (attack) phase starts.
+	 * Adds event listeners to all cards that can possibly attack.
+	 */ 
 	function startAttackPhase() {
 		attacked = new Array<Bool>();
 		if (player1.activePlayer) {
@@ -132,6 +144,9 @@ class Director
 		trace(attacked);
 	}
 	
+	/**
+	 * 
+	 */ 
 	public function readyAttack(event:MouseEvent) {
 		attacker = event.currentTarget;
 		var pos = 0;
@@ -139,6 +154,7 @@ class Director
 			if (slot.characterCard != null) {
 				slot.characterCard.removeEventListener(MouseEvent.CLICK, readyAttack);
 				if (slot.characterCard == attacker) {
+					
 					var noDefenders:Bool = true;
 					attacked[pos] = true;
 					if (pos == 0 || pos == 1) {
