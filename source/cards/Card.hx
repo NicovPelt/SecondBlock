@@ -17,10 +17,16 @@ class Card extends Sprite
 	public var owner:Player;
 
 	/*
-	 * 0 = red
-	 * 1 = blue
-	 * 2 = green
-	 * 3 = backside
+	 * 0 = backside
+	 * 1 = scissors
+	 * 2 = scissors
+	 * 3 = scissors
+	 * 4 = paper
+	 * 5 = paper
+	 * 6 = paper
+	 * 7 = rock
+	 * 8 = rock
+	 * 9 = rock
 	 */
 	public function new(cardType:Int, owner:Player ) 
 	{
@@ -28,8 +34,8 @@ class Card extends Sprite
 		this.owner = owner;
 		this.cardType = cardType;
 		
-		this.graphics.beginBitmapFill(cardGraphics[3]);
-		this.graphics.drawRect(0, 0, cardGraphics[3].width, cardGraphics[3].height);
+		this.graphics.beginBitmapFill(cardGraphics[0]);
+		this.graphics.drawRect(0, 0, cardGraphics[0].width, cardGraphics[0].height);
 	}
 	
 	

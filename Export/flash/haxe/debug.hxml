@@ -1,6 +1,6 @@
 -main ApplicationMain 
--cp C:/HaxeToolkit/haxe/lib/openfl/2,1,6
--D openfl=2.1.6
+-cp C:/HaxeToolkit/haxe/lib/openfl/2,1,5
+-D openfl=2.1.5
 -cp C:/HaxeToolkit/haxe/lib/lime/2,0,0-beta
 -D lime=2.0.0-beta
 -cp Source
@@ -11,7 +11,6 @@
 -D lime-opengl
 -D openfl-flash
 -D lime-curl
--D fdb
 -D web
 -swf-lib Export/flash/obj/assets.swf
 -swf-version 11.2

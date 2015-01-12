@@ -199,7 +199,7 @@ class Director
 		trace("battle");
 		var defender:Card = event.currentTarget;
 		defender.removeEventListener(MouseEvent.CLICK, attack);
-		if ((attacker.cardType == 0 && defender.cardType == 2) || (attacker.cardType == 1 && defender.cardType == 0) || (attacker.cardType == 2 && defender.cardType == 1)) {
+		if ((attacker.cardType == 1|2|3 && defender.cardType == 4|5|6) || (attacker.cardType == 4|5|6 && defender.cardType == 7|8|9) || (attacker.cardType == 7|8|9 && defender.cardType == 1|2|3)) {
 			for (slot in defenderField) {
 				if (defender == slot.characterCard) {
 					slot.characterCard = null;

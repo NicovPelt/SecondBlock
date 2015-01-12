@@ -36,10 +36,16 @@ class Main extends Sprite {
 		 * 		finalizing all card graphics
 		 */
 		Card.cardGraphics = new Array<BitmapData>();
-		Card.cardGraphics.push(Assets.getBitmapData ("assets/RedCard.png"));
-		Card.cardGraphics.push(Assets.getBitmapData ("assets/BlueCard.png"));
-		Card.cardGraphics.push(Assets.getBitmapData ("assets/GreenCard.png"));
-		Card.cardGraphics.push(Assets.getBitmapData ("assets/BackCard.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/cardbackside.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Scissorman.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Spider.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Owl.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Bookworm.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Elephant.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Stickman.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Golem.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Jaba.png"));
+		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Stone.png"));
 		
 		/*
 		 * initializing players and director

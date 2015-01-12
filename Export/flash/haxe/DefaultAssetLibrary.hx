@@ -44,16 +44,30 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		#if flash
 		
-		className.set ("assets/BackCard.png", __ASSET__assets_backcard_png);
-		type.set ("assets/BackCard.png", AssetType.IMAGE);
-		className.set ("assets/BlueCard.png", __ASSET__assets_bluecard_png);
-		type.set ("assets/BlueCard.png", AssetType.IMAGE);
 		className.set ("assets/BoardDigital.jpg", __ASSET__assets_boarddigital_jpg);
 		type.set ("assets/BoardDigital.jpg", AssetType.IMAGE);
 		className.set ("assets/CardField.png", __ASSET__assets_cardfield_png);
 		type.set ("assets/CardField.png", AssetType.IMAGE);
-		className.set ("assets/GreenCard.png", __ASSET__assets_greencard_png);
-		type.set ("assets/GreenCard.png", AssetType.IMAGE);
+		className.set ("assets/cards/Bookworm.png", __ASSET__assets_cards_bookworm_png);
+		type.set ("assets/cards/Bookworm.png", AssetType.IMAGE);
+		className.set ("assets/cards/cardbackside.png", __ASSET__assets_cards_cardbackside_png);
+		type.set ("assets/cards/cardbackside.png", AssetType.IMAGE);
+		className.set ("assets/cards/Elephant.png", __ASSET__assets_cards_elephant_png);
+		type.set ("assets/cards/Elephant.png", AssetType.IMAGE);
+		className.set ("assets/cards/Golem.png", __ASSET__assets_cards_golem_png);
+		type.set ("assets/cards/Golem.png", AssetType.IMAGE);
+		className.set ("assets/cards/Jaba.png", __ASSET__assets_cards_jaba_png);
+		type.set ("assets/cards/Jaba.png", AssetType.IMAGE);
+		className.set ("assets/cards/Owl.png", __ASSET__assets_cards_owl_png);
+		type.set ("assets/cards/Owl.png", AssetType.IMAGE);
+		className.set ("assets/cards/Scissorman.png", __ASSET__assets_cards_scissorman_png);
+		type.set ("assets/cards/Scissorman.png", AssetType.IMAGE);
+		className.set ("assets/cards/Spider.png", __ASSET__assets_cards_spider_png);
+		type.set ("assets/cards/Spider.png", AssetType.IMAGE);
+		className.set ("assets/cards/Stickman.png", __ASSET__assets_cards_stickman_png);
+		type.set ("assets/cards/Stickman.png", AssetType.IMAGE);
+		className.set ("assets/cards/Stone.png", __ASSET__assets_cards_stone_png);
+		type.set ("assets/cards/Stone.png", AssetType.IMAGE);
 		className.set ("assets/PhaseIcons/Phase1.png", __ASSET__assets_phaseicons_phase1_png);
 		type.set ("assets/PhaseIcons/Phase1.png", AssetType.IMAGE);
 		className.set ("assets/PhaseIcons/Phase2.png", __ASSET__assets_phaseicons_phase2_png);
@@ -62,21 +76,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/PhaseIcons/Phase3.png", AssetType.IMAGE);
 		className.set ("assets/PhaseIcons/PhaseIndicator.png", __ASSET__assets_phaseicons_phaseindicator_png);
 		type.set ("assets/PhaseIcons/PhaseIndicator.png", AssetType.IMAGE);
-		className.set ("assets/RedCard.png", __ASSET__assets_redcard_png);
-		type.set ("assets/RedCard.png", AssetType.IMAGE);
 		
 		
 		#elseif html5
 		
 		var id;
-		id = "assets/BackCard.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
-		id = "assets/BlueCard.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
 		id = "assets/BoardDigital.jpg";
 		path.set (id, id);
 		
@@ -85,7 +89,43 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "assets/GreenCard.png";
+		id = "assets/cards/Bookworm.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/cardbackside.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Elephant.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Golem.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Jaba.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Owl.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Scissorman.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Spider.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Stickman.png";
+		path.set (id, id);
+		
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Stone.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -102,10 +142,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		type.set (id, AssetType.IMAGE);
 		id = "assets/PhaseIcons/PhaseIndicator.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
-		id = "assets/RedCard.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -126,17 +162,17 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
 		#end
 		
 		#if (windows || mac || linux)
 		
 		/*var useManifest = false;
-		
-		className.set ("assets/BackCard.png", __ASSET__assets_backcard_png);
-		type.set ("assets/BackCard.png", AssetType.IMAGE);
-		
-		className.set ("assets/BlueCard.png", __ASSET__assets_bluecard_png);
-		type.set ("assets/BlueCard.png", AssetType.IMAGE);
 		
 		className.set ("assets/BoardDigital.jpg", __ASSET__assets_boarddigital_jpg);
 		type.set ("assets/BoardDigital.jpg", AssetType.IMAGE);
@@ -144,8 +180,35 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/CardField.png", __ASSET__assets_cardfield_png);
 		type.set ("assets/CardField.png", AssetType.IMAGE);
 		
-		className.set ("assets/GreenCard.png", __ASSET__assets_greencard_png);
-		type.set ("assets/GreenCard.png", AssetType.IMAGE);
+		className.set ("assets/cards/Bookworm.png", __ASSET__assets_cards_bookworm_png);
+		type.set ("assets/cards/Bookworm.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/cardbackside.png", __ASSET__assets_cards_cardbackside_png);
+		type.set ("assets/cards/cardbackside.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Elephant.png", __ASSET__assets_cards_elephant_png);
+		type.set ("assets/cards/Elephant.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Golem.png", __ASSET__assets_cards_golem_png);
+		type.set ("assets/cards/Golem.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Jaba.png", __ASSET__assets_cards_jaba_png);
+		type.set ("assets/cards/Jaba.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Owl.png", __ASSET__assets_cards_owl_png);
+		type.set ("assets/cards/Owl.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Scissorman.png", __ASSET__assets_cards_scissorman_png);
+		type.set ("assets/cards/Scissorman.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Spider.png", __ASSET__assets_cards_spider_png);
+		type.set ("assets/cards/Spider.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Stickman.png", __ASSET__assets_cards_stickman_png);
+		type.set ("assets/cards/Stickman.png", AssetType.IMAGE);
+		
+		className.set ("assets/cards/Stone.png", __ASSET__assets_cards_stone_png);
+		type.set ("assets/cards/Stone.png", AssetType.IMAGE);
 		
 		className.set ("assets/PhaseIcons/Phase1.png", __ASSET__assets_phaseicons_phase1_png);
 		type.set ("assets/PhaseIcons/Phase1.png", AssetType.IMAGE);
@@ -158,9 +221,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		className.set ("assets/PhaseIcons/PhaseIndicator.png", __ASSET__assets_phaseicons_phaseindicator_png);
 		type.set ("assets/PhaseIcons/PhaseIndicator.png", AssetType.IMAGE);
-		
-		className.set ("assets/RedCard.png", __ASSET__assets_redcard_png);
-		type.set ("assets/RedCard.png", AssetType.IMAGE);
 		*/
 		var useManifest = true;
 		
@@ -733,21 +793,33 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if !display
 #if flash
 
-@:keep @:bind #if display private #end class __ASSET__assets_backcard_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_bluecard_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_boarddigital_jpg extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_cardfield_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_greencard_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_bookworm_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_cardbackside_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_elephant_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_golem_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_jaba_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_owl_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_scissorman_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_spider_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_stickman_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_cards_stone_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_phaseicons_phase1_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_phaseicons_phase2_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_phaseicons_phase3_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_phaseicons_phaseindicator_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_redcard_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 
 
 #elseif html5
 
 #if openfl
+
+
+
+
+
+
 
 
 
@@ -770,16 +842,22 @@ class DefaultAssetLibrary extends AssetLibrary {
 #if (windows || mac || linux)
 
 //
-//@:bitmap("Assets/BackCard.png") class __ASSET__assets_backcard_png extends openfl.display.BitmapData {}
-//@:bitmap("Assets/BlueCard.png") class __ASSET__assets_bluecard_png extends openfl.display.BitmapData {}
 //@:bitmap("Assets/BoardDigital.jpg") class __ASSET__assets_boarddigital_jpg extends openfl.display.BitmapData {}
 //@:bitmap("Assets/CardField.png") class __ASSET__assets_cardfield_png extends openfl.display.BitmapData {}
-//@:bitmap("Assets/GreenCard.png") class __ASSET__assets_greencard_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Bookworm.png") class __ASSET__assets_cards_bookworm_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/cardbackside.png") class __ASSET__assets_cards_cardbackside_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Elephant.png") class __ASSET__assets_cards_elephant_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Golem.png") class __ASSET__assets_cards_golem_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Jaba.png") class __ASSET__assets_cards_jaba_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Owl.png") class __ASSET__assets_cards_owl_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Scissorman.png") class __ASSET__assets_cards_scissorman_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Spider.png") class __ASSET__assets_cards_spider_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Stickman.png") class __ASSET__assets_cards_stickman_png extends openfl.display.BitmapData {}
+//@:bitmap("Assets/cards/Stone.png") class __ASSET__assets_cards_stone_png extends openfl.display.BitmapData {}
 //@:bitmap("Assets/PhaseIcons/Phase1.png") class __ASSET__assets_phaseicons_phase1_png extends openfl.display.BitmapData {}
 //@:bitmap("Assets/PhaseIcons/Phase2.png") class __ASSET__assets_phaseicons_phase2_png extends openfl.display.BitmapData {}
 //@:bitmap("Assets/PhaseIcons/Phase3.png") class __ASSET__assets_phaseicons_phase3_png extends openfl.display.BitmapData {}
 //@:bitmap("Assets/PhaseIcons/PhaseIndicator.png") class __ASSET__assets_phaseicons_phaseindicator_png extends openfl.display.BitmapData {}
-//@:bitmap("Assets/RedCard.png") class __ASSET__assets_redcard_png extends openfl.display.BitmapData {}
 //
 //
 

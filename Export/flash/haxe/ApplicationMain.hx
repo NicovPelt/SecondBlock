@@ -27,14 +27,6 @@ class ApplicationMain {
 		var types = [];
 		
 		
-		urls.push ("assets/BackCard.png");
-		types.push (AssetType.IMAGE);
-		
-		
-		urls.push ("assets/BlueCard.png");
-		types.push (AssetType.IMAGE);
-		
-		
 		urls.push ("assets/BoardDigital.jpg");
 		types.push (AssetType.IMAGE);
 		
@@ -43,7 +35,43 @@ class ApplicationMain {
 		types.push (AssetType.IMAGE);
 		
 		
-		urls.push ("assets/GreenCard.png");
+		urls.push ("assets/cards/Bookworm.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/cardbackside.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Elephant.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Golem.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Jaba.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Owl.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Scissorman.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Spider.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Stickman.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/cards/Stone.png");
 		types.push (AssetType.IMAGE);
 		
 		
@@ -60,10 +88,6 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/PhaseIcons/PhaseIndicator.png");
-		types.push (AssetType.IMAGE);
-		
-		
-		urls.push ("assets/RedCard.png");
 		types.push (AssetType.IMAGE);
 		
 		
@@ -95,8 +119,6 @@ class ApplicationMain {
 			}
 			
 		}
-		
-		preloader = null;
 		
 		
 		

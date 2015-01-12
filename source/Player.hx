@@ -71,20 +71,62 @@ class Player extends Sprite
 	
 	/**
 	 * Adds cards to deck and shuffles it.
-	 * TODO shuffling it
 	 */
 	private function prepareDeck() {
 		var card:Card;
-		for ( i in 0...7) { //create 7 of each character card
-			card = new Character(0, this);
-			card.addEventListener(MouseEvent.CLICK, drawCard);
-			deck.push(card);
+		for ( i in 0...2) { //create 2 of each character card
 			card = new Character(1, this);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
 			card = new Character(2, this);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
+			card = new Character(3, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(4, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(5, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(6, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(7, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(8, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+			card = new Character(9, this);
+			card.addEventListener(MouseEvent.CLICK, drawCard);
+			deck.push(card);
+		}
+		card = new Character(1, this); //to get 21 cards in total
+		card.addEventListener(MouseEvent.CLICK, drawCard);
+		deck.push(card);
+		card = new Character(2, this);
+		card.addEventListener(MouseEvent.CLICK, drawCard);
+		deck.push(card);
+		card = new Character(3, this);
+		card.addEventListener(MouseEvent.CLICK, drawCard);
+		deck.push(card);
+		deck.sort(randomSort);
+	}
+	
+	/**
+	 * Sorts two cards to random location.
+	 */
+	private function randomSort( a:Card, b:Card ):Int
+	{
+		if( Math.random() < 0.5 )
+		{
+			return -1;
+		}
+		else
+		{
+			return 1;
 		}
 	}
 	
@@ -144,8 +186,8 @@ class Player extends Sprite
 			y = 600;
 			activePlayer = false;
 			for (i in 0...hand.length) {
-				hand[i].graphics.beginBitmapFill(Card.cardGraphics[3]);
-				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[3].width, Card.cardGraphics[3].height);
+				hand[i].graphics.beginBitmapFill(Card.cardGraphics[0]);
+				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[0].width, Card.cardGraphics[0].height);
 			}
 		} else {
 			rotation = 0;
