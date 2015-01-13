@@ -27,6 +27,14 @@ class ApplicationMain {
 		var types = [];
 		
 		
+		urls.push ("assets/BackCard.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/BlueCard.png");
+		types.push (AssetType.IMAGE);
+		
+		
 		urls.push ("assets/BoardDigital.jpg");
 		types.push (AssetType.IMAGE);
 		
@@ -75,6 +83,10 @@ class ApplicationMain {
 		types.push (AssetType.IMAGE);
 		
 		
+		urls.push ("assets/GreenCard.png");
+		types.push (AssetType.IMAGE);
+		
+		
 		urls.push ("assets/PhaseIcons/Phase1.png");
 		types.push (AssetType.IMAGE);
 		
@@ -88,6 +100,10 @@ class ApplicationMain {
 		
 		
 		urls.push ("assets/PhaseIcons/PhaseIndicator.png");
+		types.push (AssetType.IMAGE);
+		
+		
+		urls.push ("assets/RedCard.png");
 		types.push (AssetType.IMAGE);
 		
 		
@@ -119,6 +135,8 @@ class ApplicationMain {
 			}
 			
 		}
+		
+		preloader = null;
 		
 		
 		
