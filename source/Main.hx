@@ -35,8 +35,6 @@ class Main extends Sprite {
 		 * TODO adding effect and trapcard graphics
 		 * 		finalizing all card graphics
 		 */
-		
-		 //chris was here.
 		Card.cardGraphics = new Array<BitmapData>();
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/cardbackside.png"));
 		Card.cardGraphics.push(Assets.getBitmapData ("assets/cards/Scissorman.png"));
