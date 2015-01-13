@@ -22,6 +22,9 @@ class Director
 	public var player1:Player;
 	public var player2:Player;
 	
+	//boolean used to see if this is the first turn, used to see if a player can attack or not.
+	var firstTurn:Bool = true;
+	
 	// var to keep track of the number of cards drawn in the first phase of a turn. Starts at -8 to compensate for the starting hand drawn.
 	var cardsDrawn:Int = -8;
 	// var to keep track of the number of cards placed in the second phase of a turn.
@@ -268,8 +271,13 @@ class Director
 		if (turnPhase < 2){
 			turnPhase++;
 			phaseInd.x += 30;
-			if (turnPhase == 2) {
+			trace(turnPhase);
+			if (turnPhase == 2 && !firstTurn) {
 				startAttackPhase();
+			} else if (turnPhase == 2 && firstTurn) {
+				trace("kutzooi");
+				firstTurn = false;
+				changePhase();
 			}
 		} else {
 			player1.changeActive();

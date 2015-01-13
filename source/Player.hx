@@ -236,14 +236,16 @@ class Player extends Sprite
 		card.stopDrag();
 		card.removeEventListener(MouseEvent.MOUSE_UP, placeCard);
 		var targetField:BoardField = null;
+		var foundSlot = false;
 		for (slot in slots) {
 			targetField = slot;
 			var rect = new Rectangle(slot.x, slot.y, slot.width, slot.height);
 			if (rect.containsPoint(new Point(Lib.current.stage.mouseX, Lib.current.stage.mouseY))) {
+				foundSlot = true;
 				break;
 			}
 		}
-		if (director.canPlace(card, this) && targetField.canPlaceCard(card)) {
+		if (director.canPlace(card, this) && targetField.canPlaceCard(card) && foundSlot) {
 			//place card and execute effect
 			card.removeEventListener(MouseEvent.MOUSE_DOWN, dragCard);
 			hand.remove(card);
