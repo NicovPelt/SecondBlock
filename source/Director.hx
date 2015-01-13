@@ -229,7 +229,6 @@ class Director
 			if (!attacked[i]) {
 				finalAttack = false;
 				attackerField[i].characterCard.addEventListener(MouseEvent.CLICK, readyAttack);
-				break;
 			}
 		}
 		if (finalAttack) {
