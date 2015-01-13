@@ -207,7 +207,6 @@ class Director
 	 * compares the attacker to the defender and destroys the defender if the conditions are right.
 	 */
 	public function attack(event:MouseEvent) {
-		trace("battle");
 		var defender:Card = event.currentTarget;
 		defender.removeEventListener(MouseEvent.CLICK, attack);
 		trace(attacker.cardType+" vs "+defender.cardType);
@@ -271,11 +270,9 @@ class Director
 		if (turnPhase < 2){
 			turnPhase++;
 			phaseInd.x += 30;
-			trace(turnPhase);
 			if (turnPhase == 2 && !firstTurn) {
 				startAttackPhase();
 			} else if (turnPhase == 2 && firstTurn) {
-				trace("kutzooi");
 				firstTurn = false;
 				changePhase();
 			}
