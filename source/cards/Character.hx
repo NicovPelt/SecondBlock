@@ -7,9 +7,9 @@ package cards;
 class Character extends Card
 {
 
-	public function new(cardType:Int, owner:Player) 
+	public function new(cardType:Int, owner:Player, cardGraphic:Int) 
 	{
-		super(cardType, owner);
+		super(cardType, owner, cardGraphic);
 		
 	}
 	

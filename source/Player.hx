@@ -75,41 +75,41 @@ class Player extends Sprite
 	private function prepareDeck() {
 		var card:Card;
 		for ( i in 0...2) { //create 2 of each character card
-			card = new Character(1, this);
+			card = new Character(1, this, 1);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(2, this);
+			card = new Character(1, this, 2);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(3, this);
+			card = new Character(1, this, 3);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(4, this);
+			card = new Character(2, this, 4);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(5, this);
+			card = new Character(2, this, 5);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(6, this);
+			card = new Character(2, this, 6);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(7, this);
+			card = new Character(3, this, 7);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(8, this);
+			card = new Character(3, this, 8);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
-			card = new Character(9, this);
+			card = new Character(3, this, 9);
 			card.addEventListener(MouseEvent.CLICK, drawCard);
 			deck.push(card);
 		}
-		card = new Character(1, this); //to get 21 cards in total
+		card = new Character(1, this, 1); //to get 21 cards in total
 		card.addEventListener(MouseEvent.CLICK, drawCard);
 		deck.push(card);
-		card = new Character(2, this);
+		card = new Character(2, this, 4);
 		card.addEventListener(MouseEvent.CLICK, drawCard);
 		deck.push(card);
-		card = new Character(3, this);
+		card = new Character(3, this, 7);
 		card.addEventListener(MouseEvent.CLICK, drawCard);
 		deck.push(card);
 		deck.sort(randomSort);
@@ -170,8 +170,8 @@ class Player extends Sprite
 			topCard.x = 10 + ((hand.length - 1) * space);
 			refreshDeck();
 			card.removeEventListener(MouseEvent.CLICK, drawCard);
-			card.graphics.beginBitmapFill(Card.cardGraphics[card.cardType]);
-			card.graphics.drawRect(0, 0, Card.cardGraphics[card.cardType].width, Card.cardGraphics[card.cardType].height);
+			card.graphics.beginBitmapFill(Card.cardGraphics[card.cardGraphic]);
+			card.graphics.drawRect(0, 0, Card.cardGraphics[card.cardGraphic].width, Card.cardGraphics[card.cardGraphic].height);
 			card.addEventListener( MouseEvent.MOUSE_DOWN, dragCard);
 		}
 	}
@@ -195,8 +195,8 @@ class Player extends Sprite
 			y = 0;
 			activePlayer = true;
 			for (i in 0...hand.length) {
-				hand[i].graphics.beginBitmapFill(Card.cardGraphics[hand[i].cardType]);
-				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[hand[i].cardType].width, Card.cardGraphics[hand[i].cardType].height);
+				hand[i].graphics.beginBitmapFill(Card.cardGraphics[hand[i].cardGraphic]);
+				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[hand[i].cardGraphic].width, Card.cardGraphics[hand[i].cardGraphic].height);
 			}
 		}
 	}

@@ -54,6 +54,26 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/BoardDigital.jpg", AssetType.IMAGE);
 		path.set ("assets/CardField.png", "assets/CardField.png");
 		type.set ("assets/CardField.png", AssetType.IMAGE);
+		path.set ("assets/cards/Bookworm.png", "assets/cards/Bookworm.png");
+		type.set ("assets/cards/Bookworm.png", AssetType.IMAGE);
+		path.set ("assets/cards/cardbackside.png", "assets/cards/cardbackside.png");
+		type.set ("assets/cards/cardbackside.png", AssetType.IMAGE);
+		path.set ("assets/cards/Elephant.png", "assets/cards/Elephant.png");
+		type.set ("assets/cards/Elephant.png", AssetType.IMAGE);
+		path.set ("assets/cards/Golem.png", "assets/cards/Golem.png");
+		type.set ("assets/cards/Golem.png", AssetType.IMAGE);
+		path.set ("assets/cards/Jaba.png", "assets/cards/Jaba.png");
+		type.set ("assets/cards/Jaba.png", AssetType.IMAGE);
+		path.set ("assets/cards/Owl.png", "assets/cards/Owl.png");
+		type.set ("assets/cards/Owl.png", AssetType.IMAGE);
+		path.set ("assets/cards/Scissorman.png", "assets/cards/Scissorman.png");
+		type.set ("assets/cards/Scissorman.png", AssetType.IMAGE);
+		path.set ("assets/cards/Spider.png", "assets/cards/Spider.png");
+		type.set ("assets/cards/Spider.png", AssetType.IMAGE);
+		path.set ("assets/cards/Stickman.png", "assets/cards/Stickman.png");
+		type.set ("assets/cards/Stickman.png", AssetType.IMAGE);
+		path.set ("assets/cards/Stone.png", "assets/cards/Stone.png");
+		type.set ("assets/cards/Stone.png", AssetType.IMAGE);
 		path.set ("assets/GreenCard.png", "assets/GreenCard.png");
 		type.set ("assets/GreenCard.png", AssetType.IMAGE);
 		path.set ("assets/PhaseIcons/Phase1.png", "assets/PhaseIcons/Phase1.png");
@@ -81,6 +101,36 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/CardField.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Bookworm.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/cardbackside.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Elephant.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Golem.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Jaba.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Owl.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Scissorman.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Spider.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Stickman.png";
+		path.set (id, id);
+		type.set (id, AssetType.IMAGE);
+		id = "assets/cards/Stone.png";
 		path.set (id, id);
 		type.set (id, AssetType.IMAGE);
 		id = "assets/GreenCard.png";
@@ -118,9 +168,29 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		#if (windows || mac || linux)
 		
 		var useManifest = false;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
+		useManifest = true;
 		useManifest = true;
 		useManifest = true;
 		useManifest = true;
@@ -760,7 +830,27 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 
+
+
+
+
+
+
+
+
+
+
 #elseif html5
+
+
+
+
+
+
+
+
+
+
 
 
 

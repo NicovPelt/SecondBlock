@@ -195,14 +195,13 @@ class Director
 	}
 	
 	public function attack(event:MouseEvent) {
-		//TODO give back listeners to chars that still need to attack
 		trace("battle");
 		var defender:Card = event.currentTarget;
 		defender.removeEventListener(MouseEvent.CLICK, attack);
-		if ((attacker.cardType == 1 && defender.cardType == 4) || (attacker.cardType == 1 && defender.cardType == 5) || (attacker.cardType == 1 && defender.cardType == 6) || (attacker.cardType == 2 && defender.cardType == 4) || (attacker.cardType == 2 && defender.cardType == 5) || (attacker.cardType == 2 && defender.cardType == 6) || (attacker.cardType == 3 && defender.cardType == 4) || (attacker.cardType == 3 && defender.cardType == 5) || (attacker.cardType == 3 && defender.cardType == 6) ||  
-			(attacker.cardType == 4 && defender.cardType == 7) || (attacker.cardType == 4 && defender.cardType == 8) || (attacker.cardType == 4 && defender.cardType == 9) || (attacker.cardType == 5 && defender.cardType == 7) || (attacker.cardType == 5 && defender.cardType == 8) || (attacker.cardType == 5 && defender.cardType == 9) || (attacker.cardType == 6 && defender.cardType == 7) || (attacker.cardType == 6 && defender.cardType == 8) || (attacker.cardType == 6 && defender.cardType == 9) || 
-			(attacker.cardType == 7 && defender.cardType == 1) || (attacker.cardType == 7 && defender.cardType == 2) || (attacker.cardType == 7 && defender.cardType == 3) || (attacker.cardType == 8 && defender.cardType == 1) || (attacker.cardType == 8 && defender.cardType == 2) || (attacker.cardType == 8 && defender.cardType == 3) || (attacker.cardType == 9 && defender.cardType == 1) || (attacker.cardType == 9 && defender.cardType == 2) || (attacker.cardType == 9 && defender.cardType == 3))
-		{
+		trace(attacker.cardType+" vs "+defender.cardType);
+		if ((attacker.cardType == 1 && defender.cardType == 2) || 
+		    (attacker.cardType == 2 && defender.cardType == 3) || 
+			(attacker.cardType == 3 && defender.cardType == 1)) {
 			for (slot in defenderField) {
 				if (defender == slot.characterCard) {
 					slot.characterCard = null;
