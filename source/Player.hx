@@ -17,9 +17,10 @@ class Player extends Sprite
 	
 	var space:Int = 70; // space in between cards. May be changed to allow more cards in hand.
 	
-	var startingHand:Bool = true;
-	public var activePlayer:Bool = true;
+	var startingHand:Bool = true;//whether the player still needs to draw their starting hand
+	public var activePlayer:Bool = true;//whether it is this player's turn
 	
+	// arrays containing the cards in certain positions.
 	public var deck:Array<Card>;
 	var hand:Array<Card>;
 	public var grave:Array<Card>;
@@ -29,7 +30,9 @@ class Player extends Sprite
 	
 	var cardsLeft:TextField; //displays the cards left in the deck
 	public var topCard:Card; //top card of the deck
-	var director:Director;
+	
+	//director and main for the game. used to call certain functions in those classes.
+	var director:Director; 
 	var main:Main;
 	
 	public function new(director:Director, main:Main, startingPlayer:Bool) 
@@ -117,6 +120,7 @@ class Player extends Sprite
 	
 	/**
 	 * Sorts two cards to random location.
+	 * used for deck shuffling
 	 */
 	private function randomSort( a:Card, b:Card ):Int
 	{
@@ -253,6 +257,9 @@ class Player extends Sprite
 		}
 	}
 	
+	/**
+	 * puts each card in hand in its propper possition
+	 */
 	public function rearangeHand() {
 		for (card in hand) {
 			card.x = 10 +(hand.indexOf(card) * space);

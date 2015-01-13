@@ -27,16 +27,22 @@ class Director
 	// var to keep track of the number of cards placed in the second phase of a turn.
 	var cardsPlaced:Int = 0;
 	
-	
+	// sprites for the turn icons
 	var phase1:Sprite;
 	var phase2:Sprite;
 	var phase3:Sprite;
 	var phaseInd:Sprite;
 	
-	var attackerField:Array<BoardField>;
-	var defenderField:Array<BoardField>;
-	var attacked:Array<Bool>;
-	var attacker:Card;
+	//vars used in the attack phase. 
+	var attackerField:Array<BoardField>; //array containing all cards in the attacking player's slots
+	var defenderField:Array<BoardField>; //array containing all cards in the defending player's slots
+	var attacker:Card; //card currently selected for attack
+	
+	//saves a boolean for each card on the attacker's side. 
+	//true = either an empty slot or a card that hasn't attacked.
+	//false =  a card on the attacker's side that has yet to attack.
+	var attacked:Array<Bool>; 
+	
 
 	public function new(main:Main) 
 	{
@@ -59,7 +65,6 @@ class Director
 		bitmapData = Assets.getBitmapData ("assets/PhaseIcons/PhaseIndicator.png");
 		phaseInd.graphics.beginBitmapFill(bitmapData);
 		phaseInd.graphics.drawRect(0, 0, 20, 5);
-		
 		phase1.y = 290;
 		phase2.y = 290;
 		phase3.y = 290;
@@ -68,12 +73,11 @@ class Director
 		phase2.x = 390;
 		phase3.x = 420;
 		phaseInd.x = 360;
-		
 		main.addChild(phase1);
 		main.addChild(phase2);
 		main.addChild(phase3);
 		main.addChild(phaseInd);
-		
+		//add eventlisteners to the icons for phase 2 and 3 in order to skip to those phases.
 		phase2.addEventListener(MouseEvent.CLICK, toPhase2);
 		phase3.addEventListener(MouseEvent.CLICK, toPhase3);
 	}
@@ -145,7 +149,8 @@ class Director
 	}
 	
 	/**
-	 * 
+	 * called when a player selects a character to attack with. 
+	 * this one is called when there are defenders to attack. If there are no defenders "directAttack()" is called instead
 	 */ 
 	public function readyAttack(event:MouseEvent) {
 		attacker = event.currentTarget;
@@ -194,6 +199,10 @@ class Director
 		}
 	}
 	
+	/**
+	 * Called when the defender is clicked after the attacker is declared. 
+	 * compares the attacker to the defender and destroys the defender if the conditions are right.
+	 */
 	public function attack(event:MouseEvent) {
 		trace("battle");
 		var defender:Card = event.currentTarget;
@@ -228,6 +237,9 @@ class Director
 		}
 	}
 	
+	/**
+	 * Called when a character attacks and doesn't have to attack a defender
+	 */
 	public function directAttack() {
 		trace("direct hit");
 		if (player1.activePlayer) {
@@ -270,12 +282,20 @@ class Director
 		}
 	}
 	
+	/**
+	 * called when the 2nd phaseicon is clicked
+	 * changes phase to phase 2
+	 */
 	public function toPhase2(event:MouseEvent) {
 		if (turnPhase == 0) {
 			changePhase();
 		}
 	}
 	
+	/**
+	 * called when the 3rd phaseicon is clicked
+	 * changes phase to phase 3
+	 */
 	public function toPhase3(event:MouseEvent) {
 		if (turnPhase == 0) {
 			changePhase();
