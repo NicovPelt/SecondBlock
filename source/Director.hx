@@ -5,6 +5,7 @@ import openfl.display.Sprite;
 import openfl.Assets;
 import openfl.display.BitmapData;
 import openfl.events.MouseEvent;
+import haxe.Timer;
 
 /**
  * ...
@@ -40,6 +41,7 @@ class Director
 	var attackerField:Array<BoardField>; //array containing all cards in the attacking player's slots
 	var defenderField:Array<BoardField>; //array containing all cards in the defending player's slots
 	var attacker:Card; //card currently selected for attack
+	var defender:Card; //card selected as target.
 	
 	//saves a boolean for each card on the attacker's side. 
 	//true = either an empty slot or a card that hasn't attacked.
@@ -169,21 +171,21 @@ class Director
 						for (i in 4...6) {
 							if (defenderField[i].characterCard != null) {
 								noDefenders = false;
-								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, attack);
+								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, animationHandler);
 							}
 						}
 					} else if (pos == 2 || pos == 3) {
 						for (i in 2...4) {
 							if (defenderField[i].characterCard != null) {
 								noDefenders = false;
-								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, attack);
+								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, animationHandler);
 							}
 						}
 					} else if (pos == 4 || pos == 5) {
 						for (i in 0...2) {
 							if (defenderField[i].characterCard != null) {
 								noDefenders = false;
-								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, attack);
+								defenderField[i].characterCard.addEventListener(MouseEvent.CLICK, animationHandler);
 							}
 						}
 					}
@@ -206,9 +208,9 @@ class Director
 	 * Called when the defender is clicked after the attacker is declared. 
 	 * compares the attacker to the defender and destroys the defender if the conditions are right.
 	 */
-	public function attack(event:MouseEvent) {
-		var defender:Card = event.currentTarget;
-		defender.removeEventListener(MouseEvent.CLICK, attack);
+	public function attack() {
+		//var defender:Card = event.currentTarget;
+		defender.removeEventListener(MouseEvent.CLICK, animationHandler);
 		trace(attacker.cardType+" vs "+defender.cardType);
 		if ((attacker.cardType == 1 && defender.cardType == 2) || 
 		    (attacker.cardType == 2 && defender.cardType == 3) || 
@@ -236,6 +238,14 @@ class Director
 		if (finalAttack) {
 			changePhase();
 		}
+	}
+	//Instead of the function attack handling the mouse event, animationHandler is now using the event.
+	//This function will set a variable to the targeted defending card.
+	//It then starts a delay that is as long as the animation, when the animation is done it starts the attack function.
+	//Then the animation plays.
+	function animationHandler (event:MouseEvent) {
+		defender = event.currentTarget;
+		Timer.delay (attack, 1000);
 	}
 	
 	/**
