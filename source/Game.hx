@@ -2,7 +2,6 @@ package;
 
 import openfl.display.Sprite;
 import openfl.Assets;
-import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 import openfl.events.MouseEvent;
 import cards.*;
@@ -10,44 +9,22 @@ import openfl.geom.Matrix;
 
 class Main extends Sprite {
 	
-	var startbutton:Menubutton = new Menubutton("assets/img/MenuButtonStart.png", "assets/img/MenuButtonStartHover.png");
-	var exitbutton:Menubutton = new Menubutton("assets/img/MenuButtonExit.png", "assets/img/MenuButtonExitHover.png");
-	public var start:Bool = false;
-
 	var player1:Player;
 	var player2:Player;
 	var director:Director;
 	
 	var board:Sprite;
+	
+	
 
-	public function new() 
-	
-	{
-		super();
-		//addEventListener(Event.ADDED_TO_STAGE, added);
-		drawbackground();
-		drawmenu();
-	}
-
-	/*function added(e:Event)
-	{
-		removeEventListener(Event.ADDED_TO_STAGE, added);
+	public function new () {
 		
-		
-		
-	}*/
-	
-	
-	
-	function startGame(e:MouseEvent) 
-	{
-		removeChildren () ;
-		
+		super ();
 		/*
 		 * initializing board
 		 */
 		board = new Sprite();
-		var bitmapData = Assets.getBitmapData ("assets/BoardDigital.png");
+		var bitmapData = Assets.getBitmapData ("assets/BoardDigital.jpg");
 		var scale = new Matrix(1.3333333, 0, 0, 1.333333, 0, 0);
 		board.graphics.beginBitmapFill(bitmapData, scale);
 		board.graphics.drawRect(0, 0, 800, 600);
@@ -79,33 +56,8 @@ class Main extends Sprite {
 		player2 = new Player(director, this, false);
 		director.player1 = player1;
 		director.player2 = player2;
-	}
-
-	function exit(e:MouseEvent) 
-	{
-		//call function to terminate program
-		//System.exit(0);
-	}
-
-	function drawbackground() 
-	{
-		var background = new Bitmap(Assets.getBitmapData("assets/img/Background.png"));
-		addChildAt (background, 0);
 		
-	}	
-	
-	function drawmenu() {
-
-		startbutton.x = (stage.stageWidth - startbutton.width) / 2;
-		startbutton.y = (stage.stageHeight - startbutton.height) / 2 - 25;
-
-		exitbutton.x = (stage.stageWidth - exitbutton.width) / 2;
-		exitbutton.y = (stage.stageHeight - exitbutton.height) / 2 + 25;
-
-		addChild(startbutton);
-		addChild(exitbutton);
-		startbutton.addEventListener(MouseEvent.CLICK, startGame);
-		exitbutton.addEventListener(MouseEvent.CLICK, exit);
-
 	}
+
+	
 }
