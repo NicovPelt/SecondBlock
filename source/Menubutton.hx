@@ -17,9 +17,8 @@ class Menubutton extends Sprite
 
 	public function new(image:String, imageHover:String) 
 	{
-	
 		super();
-
+		
 		mainimage = new Bitmap(Assets.getBitmapData(image));
 		mainImageHover = new Bitmap(Assets.getBitmapData(imageHover));
 		draw();
@@ -37,6 +36,4 @@ class Menubutton extends Sprite
 		removeChildren();
 		addChild(mainimage);
 	}
-
-	
 }

@@ -12,7 +12,6 @@ class Main extends Sprite {
 	
 	var startbutton:Menubutton = new Menubutton("assets/img/MenuButtonStart.png", "assets/img/MenuButtonStartHover.png");
 	var exitbutton:Menubutton = new Menubutton("assets/img/MenuButtonExit.png", "assets/img/MenuButtonExitHover.png");
-	public var start:Bool = false;
 
 	var player1:Player;
 	var player2:Player;
@@ -20,28 +19,17 @@ class Main extends Sprite {
 	
 	var board:Sprite;
 
-	public function new() 
-	
+	public function new()
 	{
 		super();
-		//addEventListener(Event.ADDED_TO_STAGE, added);
+		
 		drawbackground();
 		drawmenu();
-	}
-
-	/*function added(e:Event)
-	{
-		removeEventListener(Event.ADDED_TO_STAGE, added);
-		
-		
-		
-	}*/
-	
-	
+	}	
 	
 	function startGame(e:MouseEvent) 
 	{
-		removeChildren () ;
+		removeChildren ();
 		
 		/*
 		 * initializing board
@@ -81,31 +69,26 @@ class Main extends Sprite {
 		director.player2 = player2;
 	}
 
-	function exit(e:MouseEvent) 
-	{
-		//call function to terminate program
-		//System.exit(0);
+	function exit(e:MouseEvent){
+		Sys.exit(0);
 	}
 
-	function drawbackground() 
-	{
+	function drawbackground(){
 		var background = new Bitmap(Assets.getBitmapData("assets/img/Background.png"));
-		addChildAt (background, 0);
+		addChild(background);
 		
 	}	
 	
-	function drawmenu() {
-
+	function drawmenu(){
 		startbutton.x = (stage.stageWidth - startbutton.width) / 2;
 		startbutton.y = (stage.stageHeight - startbutton.height) / 2 - 25;
-
+		
 		exitbutton.x = (stage.stageWidth - exitbutton.width) / 2;
 		exitbutton.y = (stage.stageHeight - exitbutton.height) / 2 + 25;
-
+		
 		addChild(startbutton);
 		addChild(exitbutton);
 		startbutton.addEventListener(MouseEvent.CLICK, startGame);
 		exitbutton.addEventListener(MouseEvent.CLICK, exit);
-
 	}
 }
