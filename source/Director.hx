@@ -142,6 +142,7 @@ class Director
 			attackerField = player2.slots;
 			defenderField = player1.slots;
 		}
+		Sys.sleep(1);
 		for (slot in attackerField) {
 			if (slot.characterCard != null) {
 				slot.characterCard.addEventListener(MouseEvent.CLICK, readyAttack);
