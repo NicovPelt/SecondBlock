@@ -240,13 +240,17 @@ class Director
 			changePhase();
 		}
 	}
-	//Instead of the function attack handling the mouse event, animationHandler is now using the event.
-	//This function will set a variable to the targeted defending card.
-	//It then starts a delay that is as long as the animation, when the animation is done it starts the attack function.
-	//Then the animation plays.
+	
+	/**
+	 * Instead of the function attack handling the mouse event, animationHandler is now using the event.
+	 * This function will set a variable to the targeted defending card.
+	 * It then starts a delay that is as long as the animation, when the animation is done it starts the attack function.
+	 * Then the animation plays.
+	 */ 
 	function animationHandler (event:MouseEvent) {
 		defender = event.currentTarget;
 		Timer.delay (attack, 1000);
+		//TODO play animation
 	}
 	
 	/**
