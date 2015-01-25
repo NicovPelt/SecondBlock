@@ -6,6 +6,7 @@ import openfl.geom.Point;
 import openfl.geom.Rectangle;
 import openfl.text.TextField;
 import openfl.events.MouseEvent;
+import openfl.events.Event;
 import openfl.Lib;
 
 /**
@@ -35,6 +36,10 @@ class Player extends Sprite
 	var director:Director; 
 	var main:Main;
 	
+	var boardAnimation = new BoardAnimation();
+	
+	var boardAnimationReversed = new BoardAnimationReversed();
+
 	public function new(director:Director, main:Main, startingPlayer:Bool) 
 	{
 		super();
@@ -182,6 +187,7 @@ class Player extends Sprite
 	
 	/**
 	 * make a player the active one or not
+	 * rotations add a lot of new bugs
 	 */
 	public function changeActive() {
 		if(activePlayer){
@@ -193,6 +199,7 @@ class Player extends Sprite
 				hand[i].graphics.beginBitmapFill(Card.cardGraphics[0]);
 				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[0].width, Card.cardGraphics[0].height);
 			}
+			rotationAnimation();
 		} else {
 			rotation = 0;
 			x = 0;
@@ -202,6 +209,7 @@ class Player extends Sprite
 				hand[i].graphics.beginBitmapFill(Card.cardGraphics[hand[i].cardGraphic]);
 				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[hand[i].cardGraphic].width, Card.cardGraphics[hand[i].cardGraphic].height);
 			}
+			//rotationReversedAnimation();
 		}
 	}
 	
@@ -267,5 +275,26 @@ class Player extends Sprite
 			card.x = 10 +(hand.indexOf(card) * space);
 		}
 	}
-
+	
+	private function update( event:Event ):Void
+	{
+		boardAnimation.update();
+	}
+	
+	function rotationAnimation()
+	{
+		addChild(boardAnimation);
+		addEventListener( Event.ENTER_FRAME, update );
+	}
+	
+	private function updateReversed( event:Event ):Void
+	{
+		boardAnimationReversed.update();
+	}
+	
+	function rotationReversedAnimation()
+	{
+		addChild(boardAnimationReversed);
+		addEventListener( Event.ENTER_FRAME, updateReversed );
+	}
 }
