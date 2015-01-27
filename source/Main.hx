@@ -7,6 +7,8 @@ import openfl.display.BitmapData;
 import openfl.events.MouseEvent;
 import cards.*;
 import openfl.geom.Matrix;
+import openfl.display.Bitmap;
+import haxe.Timer;
 
 class Main extends Sprite {
 	
@@ -19,14 +21,45 @@ class Main extends Sprite {
 	
 	var board:Sprite;
 
+	var animationframe:Bitmap;
+	var framenumber:Int=1;
+
 	public function new()
 	{
 		super();
-		
+
+		startanimation();
 		drawbackground();
 		drawmenu();
+		//Timer.delay(startanimation,1);
 	}	
+
+	function startanimation()
+	{
+		if (framenumber==1)
+		{
+			animationframe=new Bitmap(Assets.getBitmapData("assets/start animation/start1.png"));				
+			addChild(animationframe);
+			framenumber++;
+			Timer.delay(startanimation,100);
+
+		}else if(framenumber<61)
+		{
+			removeChild(animationframe);
+			animationframe=new Bitmap(Assets.getBitmapData("assets/start animation/start"+framenumber+".png"));
+			addChild (animationframe);
+			framenumber++;
+			Timer.delay(startanimation,100);
+		}else 
+		{
+			removeChild(animationframe);
+			framenumber=1;
+		}
 	
+	}
+
+
+
 	function startGame(e:MouseEvent) 
 	{
 		removeChildren ();
@@ -70,7 +103,7 @@ class Main extends Sprite {
 	}
 
 	function exit(e:MouseEvent){
-		Sys.exit(0);
+	//	Sys.exit(0);
 	}
 
 	function drawbackground(){

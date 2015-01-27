@@ -36,9 +36,9 @@ class Player extends Sprite
 	var director:Director; 
 	var main:Main;
 	
-	var boardAnimation = new BoardAnimation();
+	//var boardAnimation = new BoardAnimation();
 	
-	var boardAnimationReversed = new BoardAnimationReversed();
+	//var boardAnimationReversed = new BoardAnimationReversed();
 
 	public function new(director:Director, main:Main, startingPlayer:Bool) 
 	{
@@ -278,23 +278,23 @@ class Player extends Sprite
 	
 	private function update( event:Event ):Void
 	{
-		boardAnimation.update();
+	//	boardAnimation.update();
 	}
 	
 	function rotationAnimation()
 	{
-		addChild(boardAnimation);
+		//addChild(boardAnimation);
 		addEventListener( Event.ENTER_FRAME, update );
 	}
 	
 	private function updateReversed( event:Event ):Void
 	{
-		boardAnimationReversed.update();
+	//	boardAnimationReversed.update();
 	}
 	
 	function rotationReversedAnimation()
 	{
-		addChild(boardAnimationReversed);
+	//	addChild(boardAnimationReversed);
 		addEventListener( Event.ENTER_FRAME, updateReversed );
 	}
 }

@@ -6,7 +6,7 @@ import openfl.Assets;
 import openfl.display.BitmapData;
 import openfl.events.MouseEvent;
 import haxe.Timer;
-
+import openfl.display.Bitmap;
 /**
  * ...
  * @author Nico van Pelt
@@ -48,6 +48,9 @@ class Director
 	//false =  a card on the attacker's side that has yet to attack.
 	var attacked:Array<Bool>; 
 	
+	var animationframe:Bitmap;
+	var framenumber:Int=1;
+	var main:Main;
 
 	public function new(main:Main) 
 	{
@@ -78,6 +81,7 @@ class Director
 		phase2.x = 390;
 		phase3.x = 420;
 		phaseInd.x = 360;
+		this.main = main;
 		main.addChild(phase1);
 		main.addChild(phase2);
 		main.addChild(phase3);
@@ -142,7 +146,7 @@ class Director
 			attackerField = player2.slots;
 			defenderField = player1.slots;
 		}
-		Sys.sleep(1);
+		
 		for (slot in attackerField) {
 			if (slot.characterCard != null) {
 				slot.characterCard.addEventListener(MouseEvent.CLICK, readyAttack);
@@ -251,7 +255,39 @@ class Director
 		defender = event.currentTarget;
 		Timer.delay (attack, 3000);
 		//play animation
-		
+		animation();
+		//calls animation function
+	}
+
+	function animation () {
+		if (attacker.cardGraphic==1) {
+			/**
+			*the animation is about one specific "scissor" card, which has the integier 1.
+			*  the functions gets called, if the card is the attacker.
+			*/
+			if (framenumber==1){
+				//if it is the first frame
+				animationframe=new Bitmap(Assets.getBitmapData("assets/Scissor animation/scissorman1.png"));
+				main.addChild (animationframe);
+				//it will get drawn
+				framenumber++;
+				Timer.delay(animation,200);
+				//one frame of the animation lasts for 200 milliseconds
+			}else if(framenumber<16){
+				main.removeChild(animationframe);
+				// the previous frame will be removed
+				animationframe=new Bitmap(Assets.getBitmapData("assets/Scissor animation/scissorman"+framenumber+".png"));
+				//the next frame will be drawn
+				main.addChild (animationframe);
+				//the frame will be shown
+				framenumber++;
+				Timer.delay(animation,200);
+			}else {
+				main.removeChild(animationframe);
+				// the animations ends, if there is no image under framenumber 16 left
+				framenumber=1;
+			}
+		}
 	}
 	
 	/**
