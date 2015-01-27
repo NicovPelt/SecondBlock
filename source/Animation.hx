@@ -34,15 +34,9 @@ class Animation extends Sprite
    * The constructor. 
    * Initializes things. In this case the tilesheet with the animation
    */
-  public function new(frameCount:Int, imageWidth:Int, imageHeight:Int, currentImage:Int, bitmapData:BitmapData)
+  public function new()
   {
     super();
-    initializeTilesheet();
-	this.frameCount = frameCount;
-	this.imageWidth = imageWidth;
-	this.imageHeight = imageHeight;
-	this.currentImage = currentImage;
-	this.bitmapData = bitmapData;
   }
 
   /**

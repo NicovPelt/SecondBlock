@@ -19,7 +19,13 @@ class BoardAnimation extends Animation
 
 	public function new() 
 	{
-		super(frameCount, imageWidth, imageHeight, currentImage, bitmapData);
+		super();
+		initValues();
+		initializeTilesheet();
+	}
+	
+	function initValues()
+	{
 		frameCount = 11;
 		// the width and height of one image
 		imageWidth = 800;
@@ -27,9 +33,8 @@ class BoardAnimation extends Animation
 		// the image that is currently visible
 		currentImage = 0;
 		
-		bitmapData = Assets.getBitmapData( "assets/rotationAnimation.png" );	
+		bitmapData = Assets.getBitmapData( "assets/rotationAnimation.png" );
 	}
-	
 	override function initializeTilesheet():Void
 	{
 		var cols:Int = Math.floor( bitmapData.width / imageWidth );
