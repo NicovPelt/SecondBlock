@@ -249,8 +249,9 @@ class Director
 	 */ 
 	function animationHandler (event:MouseEvent) {
 		defender = event.currentTarget;
-		Timer.delay (attack, 1000);
-		//TODO play animation
+		Timer.delay (attack, 3000);
+		//play animation
+		
 	}
 	
 	/**
