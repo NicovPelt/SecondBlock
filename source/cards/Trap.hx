@@ -3,7 +3,6 @@ package ;
 import cards.Card;
 
 /**
- * ...
  * @author Nico van Pelt
  */
 class Trap extends Card

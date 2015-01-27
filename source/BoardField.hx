@@ -53,8 +53,11 @@ class BoardField extends Sprite
 			this.characterCard = cast(card, Character);
 			card.x = this.x + 10;
 			card.y = this.y + 10;
+		} else if (Type.getClassName(Type.getClass(card)) == "cards.Effect") {
+			//Card is effect
+			
 		} else {
-			//Card is trap of effect
+			//card is trap
 		}
 	}
 	
