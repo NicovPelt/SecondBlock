@@ -33,7 +33,7 @@ class BoardAnimation extends Animation
 		// the image that is currently visible
 		currentImage = 0;
 		
-		bitmapData = Assets.getBitmapData( "assets/rotationAnimation.png" );
+		bitmapData = Assets.getBitmapData( "assets/rotationTilesheet.png" );
 	}
 	override function initializeTilesheet():Void
 	{
