@@ -255,15 +255,19 @@ class Director
 		defender = event.currentTarget;
 		Timer.delay (attack, 3000);
 		//play animation
-		animation();
+		scissoranimation();
+		paperanimation();
+		rockanimation();
 		//calls animation function
 	}
 
-	function animation () {
-		if (attacker.cardGraphic==1) {
+	function scissoranimation ()
+	{
+		
+		if (attacker.cardType==1){
 			/**
-			*the animation is about one specific "scissor" card, which has the integier 1.
-			*  the functions gets called, if the card is the attacker.
+			*the animation is about a "scissor" card attacking a "paper" type
+			*  the functions gets called, if the attacker is a "scissor" card.
 			*/
 			if (framenumber==1){
 				//if it is the first frame
@@ -271,7 +275,7 @@ class Director
 				main.addChild (animationframe);
 				//it will get drawn
 				framenumber++;
-				Timer.delay(animation,200);
+				Timer.delay(scissoranimation,200);
 				//one frame of the animation lasts for 200 milliseconds
 			}else if(framenumber<16){
 				main.removeChild(animationframe);
@@ -281,7 +285,7 @@ class Director
 				main.addChild (animationframe);
 				//the frame will be shown
 				framenumber++;
-				Timer.delay(animation,200);
+				Timer.delay(scissoranimation,200);
 			}else {
 				main.removeChild(animationframe);
 				// the animations ends, if there is no image under framenumber 16 left
@@ -289,7 +293,51 @@ class Director
 			}
 		}
 	}
-	
+
+	function paperanimation () 
+	{
+
+		if (attacker.cardType==2){
+
+			if (framenumber==1){
+				animationframe=new Bitmap(Assets.getBitmapData("assets/Paper animation/paper1.png"));
+				main.addChild (animationframe);
+				framenumber++;
+				Timer.delay(paperanimation,200);
+			}else if(framenumber<2){
+				main.removeChild(animationframe);
+				animationframe=new Bitmap(Assets.getBitmapData("assets/Paper animation/paper"+framenumber+".png"));
+				main.addChild (animationframe);
+				framenumber++;
+				Timer.delay(paperanimation,200);
+			}else {
+				main.removeChild(animationframe);
+				framenumber=1;
+			}
+		}
+	}
+	function rockanimation () 
+	{
+
+		if (attacker.cardType==3){
+
+			if (framenumber==1){
+				animationframe=new Bitmap(Assets.getBitmapData("assets/Rock animation/rock1.png"));
+				main.addChild (animationframe);
+				framenumber++;
+				Timer.delay(rockanimation,200);
+			}else if(framenumber<2){
+				main.removeChild(animationframe);
+				animationframe=new Bitmap(Assets.getBitmapData("assets/Rock animation/rock"+framenumber+".png"));
+				main.addChild (animationframe);
+				framenumber++;
+				Timer.delay(rockanimation,200);
+			}else {
+				main.removeChild(animationframe);
+				framenumber=1;
+			}
+		}
+	}
 	/**
 	 * Called when a character attacks and doesn't have to attack a defender
 	 */

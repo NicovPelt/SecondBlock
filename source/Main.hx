@@ -31,7 +31,7 @@ class Main extends Sprite {
 		startanimation();
 		drawbackground();
 		drawmenu();
-		//Timer.delay(startanimation,1);
+		
 	}	
 
 	function startanimation()
@@ -68,11 +68,11 @@ class Main extends Sprite {
 		 * initializing board
 		 */
 		board = new Sprite();
-		var bitmapData = Assets.getBitmapData ("assets/BoardDigital.png");
+		var bitmapData = new Bitmap (Assets.getBitmapData ("assets/BoardDigital.png"));
 		var scale = new Matrix(1.3333333, 0, 0, 1.333333, 0, 0);
-		board.graphics.beginBitmapFill(bitmapData, scale);
+		//board.graphics.beginBitmapFill(bitmapData, scale);
 		board.graphics.drawRect(0, 0, 800, 600);
-		//addChild(board);
+		addChild(bitmapData);
 	 
 		/*
 		 * initializing card graphics
