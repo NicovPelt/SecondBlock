@@ -199,7 +199,7 @@ class Player extends Sprite
 				hand[i].graphics.beginBitmapFill(Card.cardGraphics[0]);
 				hand[i].graphics.drawRect(0, 0, Card.cardGraphics[0].width, Card.cardGraphics[0].height);
 			}
-			rotationAnimation();
+			//rotationAnimation();
 		} else {
 			rotation = 0;
 			x = 0;
