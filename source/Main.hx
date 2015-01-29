@@ -36,8 +36,11 @@ class Main extends Sprite {
 		drawmenu();
 		
 	}	
-
-	function startanimation() //done by Leon Kanigowski
+	/*
+	*startanimation function gets called when the game starts
+	*it shows a 60 frame long animation
+	*/
+	function startanimation()
 	{
 		if (framenumber==1)
 		{

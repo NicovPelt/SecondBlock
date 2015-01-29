@@ -263,13 +263,16 @@ class Director
 		//draw battle text
 		main.drawBattleText();
 	}
-
-	function scissoranimation ()//all the attack animation cod is done by Leon Kanigowski
+	/*
+	*the following three functions are the attack animations 
+	*which get called when a specific card type attacks.
+	*/
+	function scissoranimation ()
 	{
 		
 		if (attacker.cardType==1){
 			/**
-			*the animation is about a "scissor" card attacking a "paper" type
+			*this animation is about a "scissor" card attacking a "paper" type
 			*  the functions gets called, if the attacker is a "scissor" card.
 			*/
 			if (framenumber==1){
@@ -390,7 +393,10 @@ class Director
 			nextPlayer();
 		}
 	}
-
+	/*
+	* nextPlayer function gets called when it is the next players turn
+	* an image will be shown for 1000 milliseconds
+	*/
 	function nextPlayer()
 	{
 		next=new Bitmap(Assets.getBitmapData("assets/next.png"));
@@ -399,6 +405,7 @@ class Director
 		Timer.delay(function():Void{
     	main.removeChild(next);
    		}, 1000);
+
 	}
 	
 	/**
