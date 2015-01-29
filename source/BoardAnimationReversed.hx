@@ -24,15 +24,18 @@ class BoardAnimationReversed extends Animation
 		initializeTilesheet();
 	}
 	
+	/**
+	 * initializes the values of the sprite sheet
+	 */
 	function initValues()
 	{
+		//number of frames, the amount of images
 		frameCount = 11;
-		// the width and height of one image
+		// the width of one image
 		imageWidth = 800;
+		// the height of one image		
 		imageHeight = 600;
-		// the image that is currently visible
-		currentImage = 0;
-		
-		bitmapData = Assets.getBitmapData( "assets/rotationReversedTilesheet.png" );
+		//loads the sprite sheet
+		bitmapData = Assets.getBitmapData( "assets/rotationReversedSpriteSheet.png" );
 	}
 }

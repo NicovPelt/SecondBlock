@@ -22,7 +22,7 @@ class Animation extends Sprite
   var imageHeight:Int;
 
   // the image that is currently visible
-  var currentImage:Int;
+  var currentImage:Int = 0;
 
   // the OpenFL tilesheet object
   var tilesheet:Tilesheet;
