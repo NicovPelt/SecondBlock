@@ -141,7 +141,7 @@ class Main extends Sprite {
 		//battleText.textWidth = 20;
 		battleText.x = 400;
 		battleText.y = 35;
-		Timer.delay (removeBattleText, 3000);
+		Timer.delay (removeBattleText, 3000); //note: the duration is the same as the attack animation is (in director).
 	}
 	function removeBattleText() {
 		removeChild(battleText);
