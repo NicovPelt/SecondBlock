@@ -55,8 +55,8 @@ class Animation extends Sprite
   {
     this.graphics.clear();
 
-    // draw the image with 'id' currentGooseImage onto this.graphics
-    // the array [ 0, 0, currentGoose ] indicates
+    // draw the image with 'id' currentImage onto this.graphics
+    // the array [ 0, 0, currentImage ] indicates
     // * the x position (in this case zero)
     // * the y position (in this case zero)
     // * the index of the image to draw (increments from 0 to 11 by use of the modulo operator: %)
@@ -81,6 +81,7 @@ class Animation extends Sprite
     // loop to get all the seperate images from the sprite sheet
     for( imageIndex in 0...frameCount )
     {
+		//
 		var col:Int = imageIndex % cols;
 		var row:Int = Math.floor( imageIndex / cols );
 		// calculate the rectangle of the next board's image
