@@ -279,10 +279,10 @@ class Director
 				//if it is the first frame
 				animationframe=new Bitmap(Assets.getBitmapData("assets/Scissor animation/scissorman1.png"));
 				main.addChild (animationframe);
-				//it will get drawn
+				//it will get drawn and displayed
 				framenumber++;
 				Timer.delay(scissoranimation,200);
-				//one frame of the animation lasts for 200 milliseconds
+				//after 200 milliseconds the function gets to the next image
 			}else if(framenumber<16){
 				main.removeChild(animationframe);
 				// the previous frame will be removed
