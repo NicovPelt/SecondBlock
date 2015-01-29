@@ -51,6 +51,7 @@ class Director
 	var animationframe:Bitmap;
 	var framenumber:Int = 1;
 	var main:Main;
+	var next:Bitmap;
 
 	public function new(main:Main) 
 	{
@@ -263,7 +264,7 @@ class Director
 		main.drawBattleText();
 	}
 
-	function scissoranimation ()
+	function scissoranimation ()//all the attack animation cod is done by Leon Kanigowski
 	{
 		
 		if (attacker.cardType==1){
@@ -385,7 +386,19 @@ class Director
 			cardsPlaced = 0;
 			cardsDrawn = 0;
 			phaseInd.x = 360;
+
+			nextPlayer();
 		}
+	}
+
+	function nextPlayer()
+	{
+		next=new Bitmap(Assets.getBitmapData("assets/next.png"));
+		main.addChild (next);
+
+		Timer.delay(function():Void{
+    	main.removeChild(next);
+   		}, 1000);
 	}
 	
 	/**

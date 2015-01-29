@@ -283,7 +283,8 @@ class Player extends Sprite
 	
 	function rotationAnimation()
 	{
-		//addChild(boardAnimation);
+	
+		//addChild(BoardAnimation);
 		addEventListener( Event.ENTER_FRAME, update );
 	}
 	

@@ -37,7 +37,7 @@ class Main extends Sprite {
 		
 	}	
 
-	function startanimation()
+	function startanimation() //done by Leon Kanigowski
 	{
 		if (framenumber==1)
 		{
