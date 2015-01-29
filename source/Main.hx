@@ -9,6 +9,7 @@ import cards.*;
 import openfl.geom.Matrix;
 import openfl.display.Bitmap;
 import haxe.Timer;
+import openfl.text.TextField;
 
 class Main extends Sprite {
 	
@@ -22,7 +23,9 @@ class Main extends Sprite {
 	var board:Sprite;
 
 	var animationframe:Bitmap;
-	var framenumber:Int=1;
+	var framenumber:Int = 1;
+	
+	var battleText:TextField; //This is the text showing while a attack animation is playing.
 
 	public function new()
 	{
@@ -123,5 +126,21 @@ class Main extends Sprite {
 		addChild(exitbutton);
 		startbutton.addEventListener(MouseEvent.CLICK, startGame);
 		exitbutton.addEventListener(MouseEvent.CLICK, exit);
+	}
+	
+	public function drawBattleText() {
+		battleText = new TextField();
+		addChild(battleText);
+		battleText.text = "Battle!";
+		battleText.textColor = 0x000000;
+		//battleText.textFieldType = Dynamic;
+		//battleText.textHeight = 20;
+		//battleText.textWidth = 20;
+		battleText.x = 400;
+		battleText.y = 35;
+		Timer.delay (removeBattleText, 3000);
+	}
+	function removeBattleText() {
+		removeChild(battleText);
 	}
 }

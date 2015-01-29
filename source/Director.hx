@@ -49,7 +49,7 @@ class Director
 	var attacked:Array<Bool>; 
 	
 	var animationframe:Bitmap;
-	var framenumber:Int=1;
+	var framenumber:Int = 1;
 	var main:Main;
 
 	public function new(main:Main) 
@@ -259,6 +259,8 @@ class Director
 		paperanimation();
 		rockanimation();
 		//calls animation function
+		//draw battle text
+		main.drawBattleText();
 	}
 
 	function scissoranimation ()
